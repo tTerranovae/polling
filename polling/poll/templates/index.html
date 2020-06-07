@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link href="https://bootswatch.com/4/darkly/bootstrap.css" rel="stylesheet">
+    {% load static %}
+    <script src="{% static 'js/pace.min.js' %}"></script>
+    <link href="{% static 'css/main.css' %}" >
+    <title>Document</title>
+</head>
+<style>
+    *{
+    box-sizing: border-box;
+    }
+    body{
+    background-image:url("https://images.unsplash.com/photo-1475257026007-0753d5429e10?ixlib=rb-1.2.1&w=1000&q=80");
+    background-repeat:no-repeat;
+    background-size:cover;
+    }
+    .question{
+        background:#38383d;
+
+    }
+    main{
+     padding:1rem 1rem;
+
+    }
+
+
+</style>
+<body>
+<section class="main pt-5">
+    <div class="container pt-5">
+        <div class="card main pt-5 pb-5 pr-5 pl-5">
+            <h1 style="text-align:center; color:#a8a8a9">Welcome to Polling</h1>
+            <form method="POST" action="{% url 'poll:form-data' %}">
+                {% csrf_token%}
+                <div class="row pt-3">
+                    <div class="col-sm-3">
+                        <div class="card text-white question mb-3" style="max-width: 20rem;">
+
+                            <div class="card-body">
+                                <h4 class="card-title">SOAP</h4>
+                                <p class="card-text">
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name="soap-heard" id="soap-heard" >
+                                        <label class="custom-control-label" for="soap-heard">Heard about it</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name='soap-worked' id="customCheck2" >
+                                        <label class="custom-control-label" for="customCheck2">Worked on it</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name='soap-no' id="customCheck3" >
+                                        <label class="custom-control-label" for="customCheck3">No Idea about SOAP</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card text-white question mb-3" style="max-width: 20rem;">
+<!--                            <div class="card-header">Header</div>-->
+                            <div class="card-body">
+                                <h4 class="card-title">REST</h4>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name='rest-heard' id="customCheck4">
+                                        <label class="custom-control-label" for="customCheck4">Heard about it</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name='rest-worked' id="customCheck5" >
+                                        <label class="custom-control-label" for="customCheck5">Worked on it</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name='rest-no' id="customCheck6" >
+                                        <label class="custom-control-label" for="customCheck6">No Idea about REST</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card text-white question mb-3" style="max-width: 20rem;">
+<!--                            <div class="card-header">-->
+<!--                                <img height="25px" src="https://miro.medium.com/max/2400/1*HVKOLLX7wprRbHTl2IPDcQ.png"-->
+<!--                                     width="50px">-->
+<!--                            </div>-->
+                            <div class="card-body">
+                                <h4 class="card-title">Django</h4>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name='django-heard' id="customCheck7" >
+                                        <label class="custom-control-label" for="customCheck7">Heard about it</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name='django-worked' id="customCheck8" >
+                                        <label class="custom-control-label" for="customCheck8">Worked on it</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name='django-no' id="customCheck9" >
+                                        <label class="custom-control-label" for="customCheck9">No Idea about Django</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card text-white question mb-3" style="max-width: 20rem;">
+<!--                            <div class="card-header">-->
+<!--                                <img alt=""-->
+<!--                                     height="25" src="https://upload.wikimedia.org/wikipedia/commons/1/17/GraphQL_Logo.svg" width="50">-->
+<!--                            </div>-->
+                            <div class="card-body">
+                                <h4 class="card-title">GraphQL</h4>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name='gql-heard' id="customCheck10" >
+                                        <label class="custom-control-label" for="customCheck10">Heard about it</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name='gql-worked' id="customCheck11" >
+                                        <label class="custom-control-label" for="customCheck11">Worked on it</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name="gql-no" id="customCheck12" >
+                                        <label class="custom-control-label" for="customCheck12">No Idea about GraphQL</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 text-center pt-3">
+                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                    </div>
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>
+</body>
+</html>
