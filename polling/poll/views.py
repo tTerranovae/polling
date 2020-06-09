@@ -6,6 +6,22 @@ from .models import Polling
 class IndexView(TemplateView):
     template_name = 'index.html'
 
+    def get(self, request, *args, **kwargs):
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+
+        if Polling.objects.filter(ip_address=ip):
+            return redirect('poll:bye')
+        else:
+            return render(request, self.template_name)
+
+
+
+
+
 
 class Bye(TemplateView):
     template_name = 'thankyou.html'
@@ -60,3 +76,15 @@ def form_data(request):
         poll.save()
 
     return redirect('poll:bye')
+
+
+def polling_result(request):
+    print(Polling.objects.all())
+
+    polling_django_know = Polling.objects.filter(django_know=True).count()
+    polling_django_unknown = Polling.objects.filter(django_unknown=True).count()
+    polling_django_worked = Polling.objects.filter(django_worked=True).count()
+
+    print(polling_django_unknown,polling_django_know,polling_django_worked)
+    return render(request,'poll.html',{'django_worked': polling_django_worked, 'django_know': polling_django_know,
+                                       'django_unknown': polling_django_unknown})
