@@ -6,6 +6,8 @@
           name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <link href="https://bootswatch.com/4/darkly/bootstrap.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js" integrity="sha256-L/S5mZS8SPJVWoKym3Zwgf2f3/s3X3MaZ7QBA9HdnN8=" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     {% load static %}
     <script src="{% static 'js/pace.min.js' %}"></script>
     <link href="{% static 'css/main.css' %}" >
@@ -47,16 +49,16 @@
                                 <p class="card-text">
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="soap-heard" id="soap-heard" >
-                                        <label class="custom-control-label" for="soap-heard">Heard about it</label>
+                                        <input type="checkbox" class="custom-control-input" name="soap-heard" id="soap1" >
+                                        <label class="custom-control-label" for="soap1">Heard about it</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name='soap-worked' id="customCheck2" >
-                                        <label class="custom-control-label" for="customCheck2">Worked on it</label>
+                                        <input type="checkbox" class="custom-control-input" name='soap-worked' id="soap2" >
+                                        <label class="custom-control-label" for="soap2">Worked on it</label>
                                     </div>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name='soap-no' id="customCheck3" >
-                                        <label class="custom-control-label" for="customCheck3">No Idea about SOAP</label>
+                                        <input type="checkbox" class="custom-control-input" name='soap-no' id="soap3" >
+                                        <label class="custom-control-label" for="soap3">No Idea about SOAP</label>
                                     </div>
                                 </div>
                             </div>
@@ -145,4 +147,5 @@
     </div>
 </section>
 </body>
+
 </html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport"
+       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Document</title>
+ <link href="https://bootswatch.com/4/darkly/bootstrap.css" rel="stylesheet">
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"></script>
+</head>
+<body>
+ <div class="container">
+  <h1>Result</h1>
+  <div id="result" class="text-white"> </div>
+
+
+<canvas id="myChart" width="700" height="400"></canvas>
+ </div>
+<script type="text/javascript">
+
+    $( document ).ready(function() {
+       var x,y,z,a,b,c,d,e,f,g,h,i,o;
+       setInterval(function(){
+           $.ajax({
+
+               url:'{% url 'poll:count' %}' ,
+               type: "get",
+               cache: true,
+               timeout: 30000,
+               dataType: 'json',
+               success: function(data) {
+                   console.log("success");
+                   console.log(data);
+                   $('#result').html(data);
+                   x = data.soap_know;
+                   y = data.soap_worked;
+                   z = data.soap_unknown;
+
+                   a = data.rest_know;
+                   b = data.rest_worked;
+                   c = data.rest_unknown;
+
+                   d = data.django_know;
+                   e = data.django_worked;
+                   f = data.django_unknown;
+
+                   g = data.graphql_know;
+                   h = data.graphql_worked;
+                   i = data.graphql_unknown;
+
+                   o = data.ip;
+                   console.log(x,y,z,a,b,c,d,e,f,g,h);
+
+                   //chart js
+
+
+var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+
+  type: 'bar',
+  data: {
+    labels: ["KNOW SOAP", "WORKED ON SOAP", "NO IDEA - SOAP", " KNOW REST", "WORKED ON REST", "NO IDEA -REST", "KNOW DJANGO", "WORKED ON DJANGO", "NO IDEA - DJANGO", "KNOW GRAPHQL", "WORKED ON GRAPHQL", "NO IDEA - GRAPHQL"],
+    datasets: [{
+      label: 'POLLING RESULT'+" "+'Total Poll:'+o,
+      data: [x,y,z, a, b, c, d, e, f, g, h, i],
+      backgroundColor: [
+        '#3e95cd',
+        '#3e95cd',
+        '#3e95cd',
+        '#8e5ea2',
+        '#8e5ea2',
+        '#8e5ea2',
+        '#3cba9f',
+       '#3cba9f',
+        '#3cba9f',
+        '#e8c3b9',
+        '#e8c3b9',
+        '#e8c3b9',
+      ],
+
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      xAxes: [{
+        ticks: {
+          maxRotation: 90,
+          minRotation: 80
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+});
+
+
+
+
+
+               },
+               error: function(data) {
+                   alert("Got an error dude "+data);
+               }
+           });
+       },2000);
+        });
+
+
+
+ </script>
+</body>
+</html>
+
+
+
